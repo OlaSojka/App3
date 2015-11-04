@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://tempuri.org/XMLSchema.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/XMLSchema.xsd"
+    xmlns:mstns="http://tempuri.org/XMLSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <!-- definition of simple elements -->
+  <xs:element name="isConclusion" type="xs:boolean"/>
+  <xs:element name="yes" type="xs:int"/>
+  <xs:element name="no" type="xs:int"/>
+  <xs:element name="content" type="xs:string"/>
+  <xs:element name="title" type="xs:string"/>
+  <xs:element name="description" type="xs:string"/>
+  <xs:element name="link" type="xs:anyURI"/>
+  <xs:element name="linkDescription" type="xs:string"/>
+  
+
+  <!-- definition of complex elements -->
+  <xs:element name="question">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="isConclusion" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="yes" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="no" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="content" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="ID" use="required"/>
+    </xs:complexType>
+    <xs:unique name="unique">
+      <xs:selector xpath="question"/>
+      <xs:field xpath="ID"/>
+    </xs:unique>
+  </xs:element>
+
+  <xs:element name="questions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="question" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="source">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="linkDescription" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="link" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType> 
+  </xs:element>
+  
+  <xs:element name="sources">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="source" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="expertSystem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="title" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="description" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="questions" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="sources" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+</xs:schema>

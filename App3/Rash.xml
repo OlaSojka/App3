@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<expertSystem xmlns="http://tempuri.org/XMLSchema.xsd">
+  <title>Diagnosis of pediatric skin rashes.</title>
+  <description>pediatric rash bla bla bla</description>
+  <questions>
+  <question ID="0">
+    <isConclusion>false</isConclusion>
+    <yes>1</yes>
+    <no>2</no>
+    <content>Asses rash; are there fluid filled lesions?</content>
+  </question>
+  <question ID="1">
+    <isConclusion>false</isConclusion>
+    <yes>3</yes>
+    <no>4</no>
+    <content>Is the fluid clear?</content>
+  </question>
+  <question ID="2">
+    <isConclusion>false</isConclusion>
+    <yes>5</yes>
+    <no>6</no>
+    <content>Is it papular?</content>
+  </question>
+  <question ID="3">
+    <isConclusion>true</isConclusion>
+    <content>
+      Vesiculobullous rash:
+      Varicella zoster, Impetigo, Scaled skin syndrome, HSV, Eczema herpeticum, Erythema multiforme, SJS, Insect bites, Burns
+    </content>
+  </question>
+  <question ID="4">
+    <isConclusion>true</isConclusion>
+    <content>
+      Pustular rash:
+      Acne, TPMN, Psoriasis
+    </content>
+  </question>
+  <question ID="5">
+    <isConclusion>true</isConclusion>
+    <content>
+      Papular rash:
+      Urticaria, Molluscum contagiosum, Scabies, Warts, Keratosis pilaris
+    </content>
+  </question>
+  <question ID="6">
+    <isConclusion>false</isConclusion>
+    <yes>7</yes>
+    <no>8</no>
+    <content>Is it red?</content>
+  </question>
+  <question ID="7">
+    <isConclusion>false</isConclusion>
+    <yes>9</yes>
+    <no>10</no>
+    <content>Is it scaly?</content>
+  </question>
+  <question ID="8">
+    <isConclusion>false</isConclusion>
+    <yes>15</yes>
+    <no>16</no>
+    <content>Is it blue or black?</content>
+  </question>
+  <question ID="9">
+    <isConclusion>false</isConclusion>
+    <yes>11</yes>
+    <no>12</no>
+    <content>Epidermal breakage?</content>
+  </question>
+  <question ID="10">
+    <isConclusion>false</isConclusion>
+    <yes>13</yes>
+    <no>14</no>
+    <content>Does it blanch?</content>
+  </question>
+  <question ID="11">
+    <isConclusion>true</isConclusion>
+    <content>
+      Eczematous rash:
+      Atopic eczema, Other dermatitis
+    </content>
+  </question>
+  <question ID="12">
+    <isConclusion>true</isConclusion>
+    <content>
+      Papulosquamous rash:
+      Seborrhoeic dermatitis, Psoriasis, Tinea corporis, Pityriasis rosea
+    </content>
+  </question>
+  <question ID="13">
+    <isConclusion>true</isConclusion>
+    <content>
+      Erythematous rash:
+      Erythema infectiosum, Roseola infantum, Other viral exanthems, Kawasaki disease, Cellulitis
+    </content>
+  </question>
+  <question ID="14">
+    <isConclusion>true</isConclusion>
+    <content>
+      Purpuric rash:
+      Meningococcemia/septicemia,  Henoch-Schonlein purpura, ITP, NAI, Trauma, Enterovirus, Leukemia
+    </content>
+  </question>
+  <question ID="15">
+    <isConclusion>true</isConclusion>
+    <content>
+      Blue or black rash:
+      Hemangiomas, Vascular malformations
+    </content>
+  </question>
+  <question ID="16">
+    <isConclusion>false</isConclusion>
+    <yes>17</yes>
+    <no>18</no>
+    <content>Is it hyperpigmented?</content>
+  </question>
+  <question ID="17">
+    <isConclusion>true</isConclusion>
+    <content>
+      Hyperpigmented rash:
+      Naevi – congenital and acquired
+    </content>
+  </question>
+  <question ID="18">
+    <isConclusion>true</isConclusion>
+    <content>
+      Hypopigmented rash:
+      Pityriasisversicolor and alba, Vitiligo
+    </content>
+  </question>
+  </questions>
+  <sources>
+    <source>
+      <linkDescription>Common Childhood Rashes</linkDescription>
+      <link>http://patient.info/doctor/common-childhood-rashes</link>
+    </source>
+  </sources>
+</expertSystem>

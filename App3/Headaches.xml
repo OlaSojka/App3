@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<expertSystem xmlns="http://tempuri.org/XMLSchema.xsd">
+  <title>International headaches classification.</title>
+  <description>headaches classification bla bla bla</description>
+  <questions>
+  <question ID="0">
+    <isConclusion>false</isConclusion>
+    <yes>1</yes>
+    <no>2</no>
+    <content>Does, among the daily (or almost daily) headaches, the pain meet the criteria of migraine (with or without aura) during at least 8 days in the month or is relieved by triptans or ergotamine?</content>
+  </question>
+  <question ID="1">
+    <isConclusion>true</isConclusion>
+    <content>Chronic migraine</content>
+  </question>
+  <question ID="2">
+    <isConclusion>false</isConclusion>
+    <yes>3</yes>
+    <no>4</no>
+    <content>Is the pain constant, always on the same side, periodically with anatomical symptoms on the side of the pain (tearing, eye redness, watery discharge from the nasal passages) and is relieved by indomethacin?</content>
+  </question>
+  <question ID="3">
+    <isConclusion>true</isConclusion>
+    <content>Hemicrania continua</content>
+  </question>
+  <question ID="4">
+    <isConclusion>false</isConclusion>
+    <yes>5</yes>
+    <no>6</no>
+    <content>Did the headache, which is ongoing, begin on one particular day and from this day remains uninterrupted?</content>
+  </question>
+  <question ID="5">
+    <isConclusion>true</isConclusion>
+    <content>New daily persistent headache</content>
+  </question>
+  <question ID="6">
+    <isConclusion>false</isConclusion>
+    <yes>7</yes>
+    <no>8</no>
+    <content>Is the pain accompanied by other symptoms (other than sporadic nausea)?</content>
+  </question>
+  <question ID="7">
+    <isConclusion>true</isConclusion>
+    <content>Consider secondary headache occurring every day.</content>
+  </question>
+  <question ID="8">
+    <isConclusion>true</isConclusion>
+    <content>Chronic tension-type headache</content>
+  </question>
+  </questions>
+  <sources>
+    <source>
+      <linkDescription>Rożniecki J.J., dr hab. n. med., Międzynarodowa klasyfikacja bólów głowy, wydanie 3. (część 2.)</linkDescription>
+      <link>http://www.mp.pl/bol/wytyczne/show.html?id=100550</link>
+    </source>
+  </sources>
+</expertSystem>

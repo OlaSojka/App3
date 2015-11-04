@@ -1,0 +1,42 @@
+{"Groups":[
+  {
+    "UniqueId": "Group-1",
+    "Title": "Group Title: 1",
+    "Subtitle": "Group subtitle: 1",
+    "ImagePath": "Assets/DarkGray.png",
+    "Description": "Group Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor scelerisque lorem in vehicula. Aliquam tincidunt, lacus ut sagittis tristique, turpis massa volutpat augue, eu rutrum ligula ante a ante",
+    "Items": [
+      {
+        "UniqueId": "swallowing",
+        "Title": "Screening of swallowing",
+        "Description": "Swallowing.xml"
+      },
+      {
+        "UniqueId": "seizure",
+        "Title": "Febrile seizures",
+        "Description": "FebrileSeizures.xml"
+      },
+      {
+        "UniqueId": "headache",
+        "Title": "Classification of headaches",
+        "Description": "Headaches.xml"
+      },
+      {
+        "UniqueId": "rash",
+        "Title": "Pediatric rash",
+        "Description": "Rash.xml"
+      },
+      {
+        "UniqueId": "chest",
+        "Title": "Chest pain",
+        "Description": "ChestPain.xml"
+      },
+      {
+        "UniqueId": "file",
+        "Title": "Upload another file",
+        "Description": ""
+      }
+    ]
+  }
+]
+}
