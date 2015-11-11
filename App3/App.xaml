@@ -4,21 +4,33 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:App3">
     <Application.Resources>
-        <ImageBrush x:Key="Brush1" ImageSource="medical.jpg" Stretch="UniformToFill"/>
+        <ImageBrush x:Key="Brush1" ImageSource="backgroung.jpg" Stretch="UniformToFill"/>
         <Style x:Key="TextBlockStyle1" BasedOn="{StaticResource BaseTextBlockStyle}" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="{ThemeResource PhoneFontFamilySemiLight}"/>
             <Setter Property="FontSize" Value="57.5"/>
             <Setter Property="FontWeight" Value="SemiLight"/>
             <Setter Property="LineHeight" Value="57.5"/>
             <Setter Property="TextWrapping" Value="NoWrap"/>
-            <Setter Property="Foreground" Value="SlateGray"/>
+            <Setter Property="Foreground" Value="#A8A8A8"/>
         </Style>
 
+        <SolidColorBrush x:Key="PivotHeaderForegroundSelectedBrush" Color="WhiteSmoke" />
+        <SolidColorBrush x:Key="PivotHeaderForegroundUnselectedBrush" Color="#A8A8A8" />
+        <x:Double x:Key="PivotHeaderItemFontSize">40</x:Double>
+        
+        <!-- x:Key="WebViewStyle" TargetType="WebView">
+            <Setter Property="DefaultBackgroundColor" Value=""></Setter>
+        </-->
+        <Style x:Key="QuestionsTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{ThemeResource PhoneFontFamilySemiLight}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="LineHeight" Value="20"/>
+            <Setter Property="TextWrapping" Value="WrapWholeWords"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
 
-        <SolidColorBrush x:Key="PivotHeader" Color="SlateGray"/>
-        <Style x:Key="PivotStyle" TargetType="PivotHeaderItem">
-           <Setter Property="Foreground" Value="SlateGray"/>
         </Style>
+
     </Application.Resources>
 
 </Application>

@@ -3,13 +3,17 @@
   <title>Clinical evaluation of a patient with chest pain.</title>
   <description>chest pain bla bla bla</description>
   <questions>
-  <question ID="0">
+  <question>
+    <ID>0</ID>
     <isConclusion>false</isConclusion>
     <yes>1</yes>
     <no>2</no>
-    <content>Medium or high probability of coronary disease based on history?</content>
+    <content>
+      Medium or high probability of coronary disease based on history?
+    </content>
   </question>
-  <question ID="1">
+  <question>
+    <ID>1</ID>
     <isConclusion>false</isConclusion>
     <yes>3</yes>
     <no>4</no>
@@ -21,94 +25,137 @@
       pulmonary edema)?
     </content>
   </question>
-  <question ID="2">
-    <isConclusion>false</isConclusion>
-    <yes>5</yes>
-    <no>6</no>
-    <content>History and diagnostics indicate on-cardiac cause of chest pain?</content>
-  </question>
-  <question ID="3">
-    <isConclusion>true</isConclusion>
-    <content>See guidelines on unstable angina.</content>
-  </question>
-  <question ID="4">
-    <isConclusion>false</isConclusion>
-    <yes>7</yes>
-    <no>8</no>
-    <content>Recently past heart attack, PCI or CABG?</content>
-  </question>
-  <question ID="5">
-    <isConclusion>true</isConclusion>
-    <content>Proper treatment</content>
-  </question>
-  <question ID="6">
+    <question>
+      <ID>2</ID>
+      <isConclusion>false</isConclusion>
+      <yes>5</yes>
+      <no>6</no>
+      <content>
+        History and diagnostics indicate on-cardiac cause of chest pain?
+      </content>
+    </question>
+  <question>
+    <ID>3</ID>
     <isConclusion>true</isConclusion>
     <content>
-      Assess again probability of coronary disease.
-      Implement primary prevention.
+      See guidelines on unstable angina.
     </content>
   </question>
-  <question ID="7">
-    <isConclusion>true</isConclusion>
-    <content>See proper guidelines.</content>
-  </question>
-  <question ID="8">
+    <question>
+      <ID>4</ID>
+      <isConclusion>false</isConclusion>
+      <yes>7</yes>
+      <no>8</no>
+      <content>
+        Recently past heart attack, PCI or CABG?
+      </content>
+    </question>
+    <question>
+      <ID>5</ID>
+      <isConclusion>true</isConclusion>
+      <content>
+        Proper treatment.
+      </content>
+    </question>
+    <question>
+      <ID>6</ID>
+      <isConclusion>true</isConclusion>
+      <content>
+        Assess again probability of coronary disease.
+        Implement primary prevention.
+      </content>
+    </question>
+    <question>
+      <ID>7</ID>
+      <isConclusion>true</isConclusion>
+      <content>
+        See proper guidelines.
+      </content>
+    </question>
+  <question>
+    <ID>8</ID>
     <isConclusion>false</isConclusion>
     <yes>9</yes>
     <no>10</no>
-    <content>Conditions that can cause angina?</content>
+    <content>
+      Conditions that can cause angina?
+    </content>
   </question>
-  <question ID="9">
+  <question>
+    <ID>9</ID>
     <isConclusion>false</isConclusion>
     <yes>11</yes>
     <no>12</no>
-    <content>Angina persists after treatment of the causing disease?</content>
+    <content>
+      Angina persists after treatment of the causing disease?
+    </content>
   </question>
-  <question ID="10">
+  <question>
+    <ID>10</ID>
     <isConclusion>false</isConclusion>
     <yes>13</yes>
     <no>14</no>
-    <content>Data from the interview and/or examination indicate valve defect, pericardium disease or left ventricle dysfunction.</content>
+    <content>
+      Data from the interview and/or examination indicate valve defect, pericardium disease or left ventricle dysfunction.
+    </content>
   </question>
-  <question ID="11">
+  <question>
+    <ID>11</ID>
     <isConclusion>false</isConclusion>
     <yes>12</yes>
     <no>15</no>
-    <content>Indication of risk and prognosis assessment?</content>
+    <content>
+      Indication of risk and prognosis assessment?
+    </content>
   </question>
-  <question ID="12">
+  <question>
+    <ID>12</ID>
     <isConclusion>true</isConclusion>
-    <content>See guidelines on stress tests and coronary catheterization.</content>
+    <content>
+      See guidelines on stress tests and coronary catheterization.
+    </content>
   </question>
-  <question ID="13">
+  <question>
+    <ID>13</ID>
     <isConclusion>false</isConclusion>
     <yes>16</yes>
     <no>17</no>
-    <content>Does echocardiogram show an advanced primary valve defect?</content>
+    <content>
+      Does echocardiogram show an advanced primary valve defect?
+    </content>
   </question>
-  <question ID="14">
-    <isConclusion>false</isConclusion>
-    <yes>11</yes>
-    <no>12</no>
-    <content>High probability of coronary disease based on data from history, examination, and ECG?</content>
-  </question>
-  <question ID="15">
+    <question>
+      <ID>14</ID>
+      <isConclusion>false</isConclusion>
+      <yes>11</yes>
+      <no>12</no>
+      <content>
+        High probability of coronary disease based on data from history, examination, and ECG?
+      </content>
+    </question>
+  <question>
+    <ID>15</ID>
     <isConclusion>true</isConclusion>
     <content>
       Empirical treatment.
-
       See guidelines on treatment.
     </content>
   </question>
-  <question ID="16">
+  <question>
+    <ID>16</ID>
     <isConclusion>true</isConclusion>
-    <content>See guidelines on valve defects.</content>
+    <content>
+      See guidelines on valve defects.
+    </content>
   </question>
-  <question ID="17">
+  <question>
+    <ID>17</ID>
     <isConclusion>false</isConclusion>
     <yes>11</yes>
     <no>14</no>
-    <content>Symptoms of left valve damage?</content>
+    <content>
+      Symptoms of left valve damage?
+    </content>
   </question>
   </questions>
   <sources>

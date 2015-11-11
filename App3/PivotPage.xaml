@@ -24,7 +24,7 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Pivot x:Uid="Pivot" Title="MY APPLICATION" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True" Grid.ColumnSpan="2" >
+        <Pivot x:Uid="Pivot" Title="MY APPLICATION" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True" Grid.ColumnSpan="2" Margin="0,-1,0,28" >
             <!--Pivot item one-->
             <PivotItem
                 x:Uid="PivotItem1"
@@ -42,7 +42,7 @@
                     ItemsSource="{Binding Items}"
                     IsItemClickEnabled="True"
                     ItemClick="ItemView_ItemClick"
-                    ContinuumNavigationTransitionInfo.ExitElementContainer="True" >
+                    ContinuumNavigationTransitionInfo.ExitElementContainer="True" Margin="0,0,-0.167,-0.333" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,0,0,9.5">
@@ -65,9 +65,11 @@
                 Margin="19,14.5,0,0"
                 Header="Questions">
                 <Grid x:Name="questionsGrid" HorizontalAlignment="Left" Height="513" VerticalAlignment="Top" Width="381" Margin="0,0,-0.167,0">
-                    <WebView x:Name="questionsWebView" Margin="10,10,10,106"></WebView>
                     <Button x:Name="yesButton" Margin="70,419,0,1" Height="93" Content="Yes" Click="yesButton_Click" Visibility="Collapsed" />
                     <Button x:Name="noButton" Margin="205,419,0,1" Height="93" Content="No" Click="noButton_Click" Visibility="Collapsed" />
+                    <ScrollViewer HorizontalAlignment="Left" Height="414" VerticalAlignment="Top" Width="361">
+                        <TextBlock x:Name="questionsTextBlock" HorizontalAlignment="Left" Text="No file selected" VerticalAlignment="Top" Height="414" Width="361" Style="{StaticResource QuestionsTextBlockStyle}"/>
+                    </ScrollViewer>
                 </Grid>
             </PivotItem>
             <PivotItem

@@ -22,6 +22,8 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Storage.Pickers;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
+using Windows.UI.Xaml.Documents;
+
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
@@ -37,7 +39,9 @@ namespace App3
         private readonly ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView("Resources");
 
         private List<Question> questions;
-        private List<KeyValuePair<Question, String>> answeredQuestions;
+        private ListView answeredQuestions;
+        private ListView fututreConclusionsListView;
+      //  private List<KeyValuePair<Question, String>> answeredQuestions;
         private List<Question> futureConclusions;
         private Question presentQuestion;
 
@@ -52,7 +56,9 @@ namespace App3
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
 
             questions = new List<Question>();
-            answeredQuestions = new List<KeyValuePair<Question, string>>();
+            //answeredQuestions = new List<KeyValuePair<Question, string>>();
+            answeredQuestions = new ListView();
+            fututreConclusionsListView = new ListView();
             futureConclusions = new List<Question>();
         }
 
@@ -154,47 +160,62 @@ namespace App3
             //przy załadowaniu nowego pliku czyszczenie historii i przyszłych wniosków
             //właściwie to oba mogą byc bezpośrednio na jakieś listview, nie muszą być jeszcze listami
 
-            if (Frame.BackStack.Count != 0)
+            if (Frame.BackStack.Count != 0 && Frame.BackStack.Last().SourcePageType == typeof(ItemPage))
             {
-                if (Frame.BackStack.Last().SourcePageType == typeof (ItemPage))
+                List<String> headers = new List<string>();
+                String test = "";
+                if(answeredQuestions.Items.Count > 0)
+                    answeredQuestions.Items.Clear();
+
+                if (fututreConclusionsListView.Items.Count > 0)
+                    fututreConclusionsListView.Items.Clear();
+
+                futureConclusions.Clear();
+
+                foreach (PivotItem pi in this.pivot.Items)
                 {
-                    List<String> headers = new List<string>();
-                    String test = "";
-
-                    foreach (PivotItem pi in this.pivot.Items)
-                    {
-                        headers.Add(pi.Header.ToString());
-                    //    test += pi.Header.ToString() + "\n";
-                    }
-                  //  MessageDialog md = new MessageDialog(test);
-                 //   await md.ShowAsync();
-                    if (!(headers.Contains("History") && headers.Contains("Conclusions")))
-                    {
-                        PivotItem history = new PivotItem();
-                        history.Header = "History";
-
-                        PivotItem conclusions = new PivotItem();
-                        conclusions.Header = "Conclusions";
-
-
-                        this.pivot.Items.Insert(2, history);
-                        this.pivot.Items.Insert(4, conclusions);
-                    }
-                    questions = (List<Question>) e.Parameter;
-
-                    yesButton.Visibility = Visibility.Visible;
-                    noButton.Visibility = Visibility.Visible;
-                    presentQuestion = questions.ElementAt(0);
-                    questionsWebView.NavigateToString(presentQuestion.content);
-
-                    foreach (Question q in questions)
-                    {
-                        if(q.isConclusion)
-                            futureConclusions.Add(q);
-                    }
-                    
+                    headers.Add(pi.Header.ToString());
+                //    test += pi.Header.ToString() + "\n";
                 }
-            }
+                //  MessageDialog md = new MessageDialog(test);
+                //   await md.ShowAsync();
+                if (!(headers.Contains("History") && headers.Contains("Conclusions")))
+                {
+                    PivotItem history = new PivotItem();
+                    history.Header = "History";
+                    StackPanel stackpanel = new StackPanel();
+                    stackpanel.Children.Add(answeredQuestions);
+                    history.Content = stackpanel;
+                                        
+
+                    PivotItem conclusions = new PivotItem();
+                    conclusions.Header = "Conclusions";
+                    StackPanel stackpanel2 = new StackPanel();
+                    stackpanel2.Children.Add(fututreConclusionsListView);
+                    conclusions.Content = stackpanel2;
+
+
+                    this.pivot.Items.Insert(2, history);
+                    this.pivot.Items.Insert(4, conclusions);
+                }
+                questions = (List<Question>) e.Parameter;
+
+                yesButton.Visibility = Visibility.Visible;
+                noButton.Visibility = Visibility.Visible;
+                presentQuestion = questions.ElementAt(0);
+                questionsTextBlock.Text = presentQuestion.content;
+                
+
+                foreach (Question q in questions)
+                {
+                    if (q.isConclusion)
+                    {
+                        futureConclusions.Add(q);
+                        addConclusionToListView(q.content + "\n");
+                    }
+                }
+                    
+               }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -208,20 +229,79 @@ namespace App3
         //2. sprawdzanie czy jakiś wniosek już nie może być accessed (jakiś sprytny algorytm) i jeśli nie może, to kasowanie z futureConclusions
         //3. zmiana pytania w questionsWbView, jeśli pytanie jest wnioskiem, to buttony na collapsed
 
+        private Question findQuestion(int id)
+        {
+            return questions.Find(x => x.ID == id);
+        }
+
+        private void setQuestion(Question q)
+        {
+            if (q.isConclusion)
+            {
+                questionsTextBlock.Text = "Conclusion\n" + q.content;
+                noButton.Visibility = Visibility.Collapsed;
+                yesButton.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                questionsTextBlock.Text = q.content;
+                presentQuestion = q;
+            }
+        }
+
+        private void addConclusionToListView(String text)
+        {
+            ListViewItem item = new ListViewItem();
+            TextBlock tb = new TextBlock();
+            tb.TextWrapping = TextWrapping.WrapWholeWords;
+            tb.FontSize = 15;
+            tb.Text = text;
+            item.Content = tb;
+            fututreConclusionsListView.Items.Add(item);
+        }
+
+        private void checkConclusions()
+        {
+            if (fututreConclusionsListView.Items.Count > 0)
+                fututreConclusionsListView.Items.Clear();
+
+            //kasowanie tych wniosków, których już nie będzie
+
+            foreach (Question q in futureConclusions)
+            {
+                addConclusionToListView(q.content.Trim());
+            }
+        }
 
         private void noButton_Click(object sender, RoutedEventArgs e)
         {
-           addAnsweredQuestion(presentQuestion, "No");
+            addAnsweredQuestion(presentQuestion, "No");
+
+            Question q = findQuestion(presentQuestion.no);
+            setQuestion(q);
         }
 
         private void yesButton_Click(object sender, RoutedEventArgs e)
         {
             addAnsweredQuestion(presentQuestion, "Yes");
+
+            Question q = findQuestion(presentQuestion.yes);
+            setQuestion(q);
         }
 
         private void addAnsweredQuestion(Question q, String answer)
         {
-
+            ListViewItem item = new ListViewItem();
+            TextBlock tb = new TextBlock();
+            tb.TextWrapping = TextWrapping.WrapWholeWords;
+            tb.FontSize = 20;
+            tb.Text =  q.content.Trim() + ":  " + answer;
+            //tb.Style = this.Resources["QuestionsTextBlockStyle"] as Style;
+            item.Content = tb;
+            answeredQuestions.Items.Add(item);
+            TextBlock separatorTextBlock = new TextBlock();
+           // separatorTextBlock.Text = String.Concat(Enumerable.Repeat("-", 10));
+          //  answeredQuestions.Items.Add(separatorTextBlock);
         }
 
     }

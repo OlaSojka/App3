@@ -14,18 +14,19 @@
   <xs:element name="description" type="xs:string"/>
   <xs:element name="link" type="xs:anyURI"/>
   <xs:element name="linkDescription" type="xs:string"/>
+  <xs:element name="ID" type="xs:int"/>
   
 
   <!-- definition of complex elements -->
   <xs:element name="question">
     <xs:complexType>
       <xs:sequence>
+        <xs:element ref="ID" minOccurs="1" maxOccurs="1"/>
         <xs:element ref="isConclusion" minOccurs="1" maxOccurs="1"/>
         <xs:element ref="yes" minOccurs="0" maxOccurs="1"/>
         <xs:element ref="no" minOccurs="0" maxOccurs="1"/>
         <xs:element ref="content" minOccurs="1" maxOccurs="1"/>
       </xs:sequence>
-      <xs:attribute name="ID" use="required"/>
     </xs:complexType>
     <xs:unique name="unique">
       <xs:selector xpath="question"/>

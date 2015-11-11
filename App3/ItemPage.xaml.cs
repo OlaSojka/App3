@@ -121,6 +121,9 @@ namespace App3
             expertSystem = (ExpertSystem)x.Deserialize(xmlReader);
 
             this.WebViewDescription.NavigateToString(expertSystem.description);
+
+            this.textBlock1.Text = expertSystem.description;
+
             String sourceshtml = "";
 
             foreach (Source s in expertSystem.sources)
