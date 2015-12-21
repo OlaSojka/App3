@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <expertSystem xmlns="http://tempuri.org/XMLSchema.xsd" >
   <title>A diagnostic procedure and preventive treatment after the first attack of febrile seizures in children between 6 months and 5 years of age.</title>
-  <description>febrile seizures bla bla bla</description>
+  <description>The following file helps the physicians to diagnose and treat febrile seizures, that are seizures in children between 6 months and 5 years of age. They may be different in length and repeat in spite of prophylaxis. They are caused by fever, usually greater than 38°, and occur suddenly. The challenge lays in the number of actions a physician has to take: detailed diagnosis, choice of the examinations and especially family education in dealing with their child. About 2-5% of the children experienced them at least once and they increase the risk of their recurrence or the epilepsy development. 
+The algorithm hidden under the questions presents the required actions in a way that it is clearly understandable for the physicians. Every step of diagnostics is depicted individually and depending on the child’s age, treatment up to now and the results of possible lumbar puncture.</description>
   <questions>
     <question>
       <ID>0</ID>
       <isConclusion>false</isConclusion>
       <yes>1</yes>
       <no>2</no>
-      <content>
-        Are all of the following criteria met?
-        •	fever
-        •	generalized convulsions
-        •	convulsions lasting less than 15 minutes
-        •	normal result of neurological test
-        •	no central nervous system disease or factors damaging central nervous system in an interview
+      <content>Are all of the following criteria met?
+• fever
+• generalized convulsions
+• convulsions lasting less than 15 minutes
+• normal result of neurological test
+• no central nervous system disease or factors damaging central nervous system in an interview
       </content>
     </question>
   <question>
@@ -22,21 +22,19 @@
     <isConclusion>false</isConclusion>
     <yes>3</yes>
     <no>4</no>
-    <content>
-      Determine the cause of the fever.
-      •	If you find infection, apply appropriate treatment.
-      •	Use antipyretics.
-      •	Do not perform marking of the electrolytes and glucose’s concentration in the serum or the examination of blood count as a matter of course.
-      •	Do not perform MRI, CT or MRI of the head as a matter of course.
-      Does the child has the signs of meningism?
+    <content>Determine the cause of the fever.
+• If you find infection, apply appropriate treatment.
+• Use antipyretics.
+• Do not perform marking of the electrolytes and glucose’s concentration in the serum or the examination of blood count as a matter of course.
+• Do not perform MRI, CT or MRI of the head as a matter of course.
+Does the child has the signs of meningism?
     </content>
   </question>
     <question>
       <ID>2</ID>
       <isConclusion>true</isConclusion>
-      <content>
-        •	Do not identify simple febrile seizures.
-        •	Use appropriate evaluation and treatment.
+      <content>• Do not identify simple febrile seizures.
+• Use appropriate evaluation and treatment.
       </content>
     </question>
     <question>
@@ -44,9 +42,8 @@
       <isConclusion>false</isConclusion>
       <yes>5</yes>
       <no>6</no>
-      <content>
-        Perform lumbar puncture.
-        Is the result normal?
+      <content>Perform lumbar puncture.
+Is the result normal?
       </content>
     </question>
     <question>
@@ -54,8 +51,7 @@
       <isConclusion>false</isConclusion>
       <yes>7</yes>
       <no>8</no>
-      <content>
-        Is the child 1 year or less old?
+      <content>Is the child 1 year or less old?
       </content>
     </question>
   <question>
@@ -63,9 +59,8 @@
     <isConclusion>false</isConclusion>
     <yes>9</yes>
     <no>10</no>
-    <content>
-      Identify simple febrile seizures.
-      Is general state of the patient good?
+    <content>Identify simple febrile seizures.
+Is general state of the patient good?
     </content>
   </question>
     <question>
@@ -73,8 +68,7 @@
       <isConclusion>false</isConclusion>
       <yes>11</yes>
       <no>12</no>
-      <content>
-        Does the child have bacterial meningitis?
+      <content>Does the child have bacterial meningitis?
       </content>
     </question>
   <question>
@@ -82,9 +76,8 @@
     <isConclusion>false</isConclusion>
     <yes>5</yes>
     <no>6</no>
-    <content>
-      Perform lumbar puncture at every child. No signs of meningism do not exclude meningitis.
-      Is the result normal?
+    <content>Perform lumbar puncture at every child. No signs of meningism do not exclude meningitis.
+Is the result normal?
     </content>
   </question>
   <question>
@@ -92,38 +85,33 @@
     <isConclusion>false</isConclusion>
     <yes>13</yes>
     <no>14</no>
-    <content>
-      Has the child received antibiotics before a seizure?
+    <content>Has the child received antibiotics before a seizure?
     </content>
   </question>
   <question>
     <ID>9</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      •	Discharge patient for the hospital.
-      •	Instruct parents how to act when febrile seizures occur.
-      •	Do not perform control EEG.
+    <content>• Discharge patient for the hospital.
+• Instruct parents how to act when febrile seizures occur.
+• Do not perform control EEG.
     </content>
   </question>
   <question>
     <ID>10</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      Hospitalization until the improvement of the patient’s state.
+    <content>Hospitalization until the improvement of the patient’s state.
     </content>
   </question>
   <question>
     <ID>11</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      Start proper treatment
+    <content>Start proper treatment
     </content>
   </question>
   <question>
     <ID>12</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      Perform proper diagnostics and treatment
+    <content>Perform proper diagnostics and treatment
     </content>
   </question>
     <question>
@@ -131,9 +119,8 @@
       <isConclusion>false</isConclusion>
       <yes>5</yes>
       <no>6</no>
-      <content>
-        Perform lumbar puncture at every child. Therapy with antibiotics can mask symptoms of meningitis.
-        Is the result normal?
+      <content>Perform lumbar puncture at every child. Therapy with antibiotics can mask symptoms of meningitis.
+Is the result normal?
       </content>
     </question>
     <question>
@@ -141,8 +128,7 @@
       <isConclusion>false</isConclusion>
       <yes>15</yes>
       <no>16</no>
-      <content>
-        Is the child 12 to 18 months old?
+      <content>Is the child 12 to 18 months old?
       </content>
     </question>
     <question>
@@ -150,9 +136,8 @@
       <isConclusion>false</isConclusion>
       <yes>17</yes>
       <no>5</no>
-      <content>
-        Consider performing lumbar puncture. Signs of meningitis at this age may be faint.
-        Was lumbar puncture done?
+      <content>Consider performing lumbar puncture. Signs of meningitis at this age may be faint.
+Was lumbar puncture done?
       </content>
     </question>
     <question>
@@ -160,10 +145,9 @@
       <isConclusion>false</isConclusion>
       <yes>9</yes>
       <no>10</no>
-      <content>
-        Age above 18 months and no signs of meningism. Identify simple febrile seizures.
-        Do not perform lumbar puncture as the matter of course (unless clinical symptoms indicate meningitis).
-        Is general state of the patient good?
+      <content>Age above 18 months and no signs of meningism. Identify simple febrile seizures.
+Do not perform lumbar puncture as the matter of course (unless clinical symptoms indicate meningitis).
+Is general state of the patient good?
       </content>
     </question>
     <question>
@@ -172,7 +156,7 @@
       <yes>5</yes>
       <no>6</no>
       <content>
-        Is the result normal?
+Is the result normal?
       </content>
     </question>
   </questions>

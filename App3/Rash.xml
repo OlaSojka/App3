@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <expertSystem xmlns="http://tempuri.org/XMLSchema.xsd">
   <title>Diagnosis of pediatric skin rashes.</title>
-  <description>pediatric rash bla bla bla</description>
+  <description>A rash is a change of the skin which affects its color, appearance, or texture. It can be localized everywhere on the skin, even cover the whole body. There are many causes of rashes ranging from allergy, common diseases such as chickenpox, and anxiety to lead poisoning, genetic conditions and pregnancy. Methods of rash treatment are as numerous as their causes, therefore the diagnosis is the most important action the physician has to take and at the same time very difficult. 
+The simple questions inside this file can lead to determining what kind of rash are we dealing with. The conclusions also suggest what disease can cause the rash. It speeds up the diagnosis by skipping the diseases that for sure can not trigger the occurrence of that specific rash.</description>
   <questions>
   <question>
     <ID>0</ID>
     <isConclusion>false</isConclusion>
     <yes>1</yes>
     <no>2</no>
-    <content>
-      Asses rash.
-      Are there fluid filled lesions?
+    <content>Asses rash.
+Are there fluid filled lesions?
     </content>
   </question>
   <question>
@@ -18,8 +18,7 @@
     <isConclusion>false</isConclusion>
     <yes>3</yes>
     <no>4</no>
-    <content>
-      Is the fluid clear?
+    <content>Is the fluid clear?
     </content>
   </question>
   <question>
@@ -27,32 +26,28 @@
     <isConclusion>false</isConclusion>
     <yes>5</yes>
     <no>6</no>
-    <content>
-      Is it papular?
+    <content>Is it papular?
     </content>
   </question>
   <question>
     <ID>3</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      Vesiculobullous rash:
-      Varicella zoster, Impetigo, Scaled skin syndrome, HSV, Eczema herpeticum, Erythema multiforme, SJS, Insect bites, Burns
+    <content>Vesiculobullous rash:
+Varicella zoster, Impetigo, Scaled skin syndrome, HSV, Eczema herpeticum, Erythema multiforme, SJS, Insect bites, Burns
     </content>
   </question>
   <question>
     <ID>4</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      Pustular rash:
-      Acne, TPMN, Psoriasis
+    <content>Pustular rash:
+Acne, TPMN, Psoriasis
     </content>
   </question>
   <question>
     <ID>5</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      Papular rash:
-      Urticaria, Molluscum contagiosum, Scabies, Warts, Keratosis pilaris
+    <content>Papular rash:
+Urticaria, Molluscum contagiosum, Scabies, Warts, Keratosis pilaris
     </content>
   </question>
   <question>
@@ -60,8 +55,7 @@
     <isConclusion>false</isConclusion>
     <yes>7</yes>
     <no>8</no>
-    <content>
-      Is it red?
+    <content>Is it red?
     </content>
   </question>
   <question>
@@ -69,8 +63,7 @@
     <isConclusion>false</isConclusion>
     <yes>9</yes>
     <no>10</no>
-    <content>
-      Is it scaly?
+    <content>Is it scaly?
     </content>
   </question>
   <question>
@@ -78,8 +71,7 @@
     <isConclusion>false</isConclusion>
     <yes>15</yes>
     <no>16</no>
-    <content>
-      Is it blue or black?
+    <content>Is it blue or black?
     </content>
   </question>
   <question>
@@ -87,8 +79,7 @@
     <isConclusion>false</isConclusion>
     <yes>11</yes>
     <no>12</no>
-    <content>
-      Epidermal breakage?
+    <content>Epidermal breakage?
     </content>
   </question>
   <question>
@@ -96,48 +87,42 @@
     <isConclusion>false</isConclusion>
     <yes>13</yes>
     <no>14</no>
-    <content>
-      Does it blanch?
+    <content>Does it blanch?
     </content>
   </question>
     <question>
       <ID>11</ID>
       <isConclusion>true</isConclusion>
-      <content>
-        Eczematous rash:
-        Atopic eczema, Other dermatitis
+      <content>Eczematous rash:
+Atopic eczema, Other dermatitis
       </content>
     </question>
   <question >
     <ID>12</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      Papulosquamous rash:
-      Seborrhoeic dermatitis, Psoriasis, Tinea corporis, Pityriasis rosea
+    <content>Papulosquamous rash:
+Seborrhoeic dermatitis, Psoriasis, Tinea corporis, Pityriasis rosea
     </content>
   </question>
     <question>
       <ID>13</ID>
       <isConclusion>true</isConclusion>
-      <content>
-        Erythematous rash:
-        Erythema infectiosum, Roseola infantum, Other viral exanthems, Kawasaki disease, Cellulitis
+      <content>Erythematous rash:
+Erythema infectiosum, Roseola infantum, Other viral exanthems, Kawasaki disease, Cellulitis
       </content>
     </question>
     <question>
       <ID>14</ID>
       <isConclusion>true</isConclusion>
-      <content>
-        Purpuric rash:
-        Meningococcemia/septicemia,  Henoch-Schonlein purpura, ITP, NAI, Trauma, Enterovirus, Leukemia
+      <content>Purpuric rash:
+Meningococcemia/septicemia,  Henoch-Schonlein purpura, ITP, NAI, Trauma, Enterovirus, Leukemia
       </content>
     </question>
   <question>
     <ID>15</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      Blue or black rash:
-      Hemangiomas, Vascular malformations
+    <content>Blue or black rash:
+Hemangiomas, Vascular malformations
     </content>
   </question>
     <question>
@@ -145,24 +130,21 @@
       <isConclusion>false</isConclusion>
       <yes>17</yes>
       <no>18</no>
-      <content>
-        Is it hyperpigmented?
+      <content>Is it hyperpigmented?
       </content>
     </question>
     <question>
       <ID>17</ID>
       <isConclusion>true</isConclusion>
-      <content>
-        Hyperpigmented rash:
-        Naevi – congenital and acquired
+      <content>Hyperpigmented rash:
+Naevi – congenital and acquired
       </content>
     </question>
   <question>
     <ID>18</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      Hypopigmented rash:
-      Pityriasisversicolor and alba, Vitiligo
+    <content>Hypopigmented rash:
+Pityriasisversicolor and alba, Vitiligo
     </content>
   </question>
   </questions>

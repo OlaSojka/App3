@@ -3,10 +3,13 @@ using App3.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -20,17 +23,24 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Storage.Pickers;
+using Windows.UI;
 using Windows.UI.Popups;
+using Windows.UI.Text;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Documents;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
 namespace App3
 {
-    public sealed partial class PivotPage : Page
+    public sealed partial class PivotPage : Page, IFileOpenPickerContinuable 
     {
+        public static PivotPage Current;
+
         private const string FirstGroupName = "FirstGroup";
         private const string SecondGroupName = "SecondGroup";
 
@@ -45,8 +55,11 @@ namespace App3
         private List<Question> futureConclusions;
         private Question presentQuestion;
 
+        private List<int> answeredQuestionsIdList; 
+
         public PivotPage()
         {
+            Current = this;
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
@@ -58,8 +71,11 @@ namespace App3
             questions = new List<Question>();
             //answeredQuestions = new List<KeyValuePair<Question, string>>();
             answeredQuestions = new ListView();
+            answeredQuestions.MaxHeight = questionsGrid.Height - 20;
             fututreConclusionsListView = new ListView();
+            fututreConclusionsListView.MaxHeight = questionsGrid.Height - 20;
             futureConclusions = new List<Question>();
+            answeredQuestionsIdList = new List<int>();
         }
 
         /// <summary>
@@ -127,7 +143,13 @@ namespace App3
                 FileOpenPicker openPicker = new FileOpenPicker();
                 openPicker.ViewMode = PickerViewMode.List;
                 openPicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-                openPicker.FileTypeFilter.Add(".xml");
+                openPicker.FileTypeFilter.Add(".jpg");
+
+                //
+                //
+                // XML !!!!!!!!!!!!!!!!!!!!!!!!!!!
+                //
+                //
 
                 // Launch file open picker and caller app is suspended and may be terminated if required
                 openPicker.PickSingleFileAndContinue();
@@ -137,6 +159,37 @@ namespace App3
                 throw new Exception(this.resourceLoader.GetString("NavigationFailedExceptionMessage"));
             }
         }
+
+        public async void ContinueFileOpenPicker(FileOpenPickerContinuationEventArgs args)
+        {
+            if (args.Files.Count > 0)
+            {
+                XmlReader xmlReader = XmlReader.Create("test.xml", new XmlReaderSettings()); // args.Files[0].Name zamiast chestpain.xml
+                XmlSerializer x = new XmlSerializer(typeof(ExpertSystem), "http://tempuri.org/XMLSchema.xsd");
+                ExpertSystem expertSystem = null;
+                try
+                {
+                    expertSystem = (ExpertSystem) x.Deserialize(xmlReader);
+                }
+                catch (Exception exception)
+                {
+                    MessageDialog md1 = new MessageDialog("Invalid XML file");
+                    await md1.ShowAsync();
+                }
+                if (expertSystem != null)
+                {
+                    MessageDialog md1 = new MessageDialog("Selected file" + args.Files[0].Name);
+                    await md1.ShowAsync();
+                    processFile(expertSystem.questions);
+                }
+            }
+            else
+            {
+                MessageDialog md = new MessageDialog("Operation cancelled");
+                await md.ShowAsync();
+            }
+        }
+
 
         #region NavigationHelper registration
 
@@ -153,69 +206,76 @@ namespace App3
         /// </summary>
         /// <param name="e">Provides data for navigation methods and event
         /// handlers that cannot cancel the navigation request.</param>
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
 
             //przy załadowaniu nowego pliku czyszczenie historii i przyszłych wniosków
             //właściwie to oba mogą byc bezpośrednio na jakieś listview, nie muszą być jeszcze listami
-
             if (Frame.BackStack.Count != 0 && Frame.BackStack.Last().SourcePageType == typeof(ItemPage))
             {
-                List<String> headers = new List<string>();
-                String test = "";
-                if(answeredQuestions.Items.Count > 0)
-                    answeredQuestions.Items.Clear();
+               processFile((List<Question>)e.Parameter);   
+            }
+        }
 
-                if (fututreConclusionsListView.Items.Count > 0)
-                    fututreConclusionsListView.Items.Clear();
+        private void processFile(List<Question> list)
+        {
+            List<String> headers = new List<string>();
+            String test = "";
+            if (answeredQuestions.Items.Count > 0)
+                answeredQuestions.Items.Clear();
 
-                futureConclusions.Clear();
+            if (fututreConclusionsListView.Items.Count > 0)
+                fututreConclusionsListView.Items.Clear();
 
-                foreach (PivotItem pi in this.pivot.Items)
+            futureConclusions.Clear();
+            answeredQuestionsIdList.Clear();
+
+            foreach (PivotItem pi in this.pivot.Items)
+            {
+                headers.Add(pi.Header.ToString());
+            }
+
+            if (!(headers.Contains("History") && headers.Contains("Conclusions")))
+            {
+                PivotItem history = new PivotItem();
+                history.Header = "History";
+                StackPanel stackpanel = new StackPanel();
+                stackpanel.Children.Add(answeredQuestions);
+                history.Content = stackpanel;
+
+                PivotItem conclusions = new PivotItem();
+                conclusions.Header = "Conclusions";
+                StackPanel stackpanel2 = new StackPanel();
+                stackpanel2.Children.Add(fututreConclusionsListView);
+                conclusions.Content = stackpanel2;
+
+                this.pivot.Items.Insert(2, history);
+                this.pivot.Items.Insert(4, conclusions);
+            }
+
+            questions = list;
+
+            yesButton.Visibility = Visibility.Visible;
+            noButton.Visibility = Visibility.Visible;
+            backButton.Visibility = Visibility.Visible;
+            presentQuestion = findQuestion(0);
+
+            Run run = new Run();
+            run.Text = presentQuestion.content;
+            Paragraph p = new Paragraph();
+            p.Inlines.Add(run);
+            questionsTextBlock.Blocks.Clear();
+            questionsTextBlock.Blocks.Add(p);
+
+            foreach (Question q in questions)
+            {
+                if (q.isConclusion)
                 {
-                    headers.Add(pi.Header.ToString());
-                //    test += pi.Header.ToString() + "\n";
+                    futureConclusions.Add(q);
+                    addConclusionToListView(q.content + "\n");
                 }
-                //  MessageDialog md = new MessageDialog(test);
-                //   await md.ShowAsync();
-                if (!(headers.Contains("History") && headers.Contains("Conclusions")))
-                {
-                    PivotItem history = new PivotItem();
-                    history.Header = "History";
-                    StackPanel stackpanel = new StackPanel();
-                    stackpanel.Children.Add(answeredQuestions);
-                    history.Content = stackpanel;
-                                        
-
-                    PivotItem conclusions = new PivotItem();
-                    conclusions.Header = "Conclusions";
-                    StackPanel stackpanel2 = new StackPanel();
-                    stackpanel2.Children.Add(fututreConclusionsListView);
-                    conclusions.Content = stackpanel2;
-
-
-                    this.pivot.Items.Insert(2, history);
-                    this.pivot.Items.Insert(4, conclusions);
-                }
-                questions = (List<Question>) e.Parameter;
-
-                yesButton.Visibility = Visibility.Visible;
-                noButton.Visibility = Visibility.Visible;
-                presentQuestion = questions.ElementAt(0);
-                questionsTextBlock.Text = presentQuestion.content;
-                
-
-                foreach (Question q in questions)
-                {
-                    if (q.isConclusion)
-                    {
-                        futureConclusions.Add(q);
-                        addConclusionToListView(q.content + "\n");
-                    }
-                }
-                    
-               }
+            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -225,28 +285,39 @@ namespace App3
 
         #endregion
 
-        //1. dodawanie pytań i odpowiedzi do answeredQuestions, 
-        //2. sprawdzanie czy jakiś wniosek już nie może być accessed (jakiś sprytny algorytm) i jeśli nie może, to kasowanie z futureConclusions
-        //3. zmiana pytania w questionsWbView, jeśli pytanie jest wnioskiem, to buttony na collapsed
-
         private Question findQuestion(int id)
         {
             return questions.Find(x => x.ID == id);
         }
 
-        private void setQuestion(Question q)
+        private bool setQuestion(Question q)
         {
+            questionsTextBlock.Blocks.Clear();
+            Paragraph p = new Paragraph();
+            p.TextIndent = 0;
+            Run run = new Run();
+            run.Text = q.content;
+
+            bool conclusionFlag = false;
+
             if (q.isConclusion)
             {
-                questionsTextBlock.Text = "Conclusion\n" + q.content;
+                Run conclusion = new Run();
+                conclusion.Text = "Conclusion:\n";
+
+                p.Inlines.Add(conclusion);
+
                 noButton.Visibility = Visibility.Collapsed;
                 yesButton.Visibility = Visibility.Collapsed;
+                conclusionFlag = true;
             }
-            else
-            {
-                questionsTextBlock.Text = q.content;
-                presentQuestion = q;
-            }
+
+            presentQuestion = q;
+
+            p.Inlines.Add(run);
+
+            questionsTextBlock.Blocks.Add(p);
+            return conclusionFlag;
         }
 
         private void addConclusionToListView(String text)
@@ -260,49 +331,138 @@ namespace App3
             fututreConclusionsListView.Items.Add(item);
         }
 
+        public static List<List<int>> listOLists = new List<List<int>>();
+
+        public void test(List<int> prev, Question q)
+        {
+            Question q1 = findQuestion(q.no);
+            Question q2 = findQuestion(q.yes);
+
+            if (q.isConclusion)
+            {
+                futureConclusions.Add(q);
+                return;
+            }
+
+            List<int> newVector = new List<int>(prev);
+            newVector.Add(q1.ID);
+
+            listOLists.Add(newVector);
+            test(newVector, q1);
+
+            prev.Add(q2.ID);
+            test(prev, q2);
+        }
+
         private void checkConclusions()
         {
             if (fututreConclusionsListView.Items.Count > 0)
                 fututreConclusionsListView.Items.Clear();
 
-            //kasowanie tych wniosków, których już nie będzie
+            futureConclusions.Clear();
+            listOLists.Clear();
+            List<int> nowa = new List<int>();
+            nowa.Add(presentQuestion.ID);
+            listOLists.Add(nowa);
 
-            foreach (Question q in futureConclusions)
+            test(nowa, presentQuestion);
+
+            foreach (Question q in futureConclusions.Distinct().ToList())
             {
-                addConclusionToListView(q.content.Trim());
+                addConclusionToListView(q.content + "\n");
+            }
+        }
+
+        private void updateConclusions(Question q)
+        {
+            if (!setQuestion(q))
+                checkConclusions();
+            else
+            {
+                fututreConclusionsListView.Items.Clear();
+                addAnsweredQuestion(q);
             }
         }
 
         private void noButton_Click(object sender, RoutedEventArgs e)
         {
+            answeredQuestionsIdList.Add(presentQuestion.ID);
+            Question q = findQuestion(presentQuestion.no);
+
             addAnsweredQuestion(presentQuestion, "No");
 
-            Question q = findQuestion(presentQuestion.no);
-            setQuestion(q);
+            updateConclusions(q);
         }
 
         private void yesButton_Click(object sender, RoutedEventArgs e)
         {
+            answeredQuestionsIdList.Add(presentQuestion.ID);
+            Question q = findQuestion(presentQuestion.yes);
+
             addAnsweredQuestion(presentQuestion, "Yes");
 
-            Question q = findQuestion(presentQuestion.yes);
-            setQuestion(q);
+            updateConclusions(q);
         }
 
-        private void addAnsweredQuestion(Question q, String answer)
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (answeredQuestionsIdList.Count > 0)
+            {
+                if (presentQuestion.isConclusion)
+                {
+                    noButton.Visibility = Visibility.Visible;
+                    yesButton.Visibility = Visibility.Visible;
+                }
+                Question q = findQuestion(answeredQuestionsIdList.Last());
+                answeredQuestionsIdList.Remove(answeredQuestionsIdList.Last());
+
+                addAnsweredQuestion(null, "Back");
+                updateConclusions(q);
+            }
+        }
+
+        private void addAnsweredQuestion(Question q=null, String answer="")
         {
             ListViewItem item = new ListViewItem();
-            TextBlock tb = new TextBlock();
-            tb.TextWrapping = TextWrapping.WrapWholeWords;
-            tb.FontSize = 20;
-            tb.Text =  q.content.Trim() + ":  " + answer;
-            //tb.Style = this.Resources["QuestionsTextBlockStyle"] as Style;
+            RichTextBlock tb = new RichTextBlock();
+
+            tb.Foreground = new SolidColorBrush(Colors.WhiteSmoke);
+
+            Paragraph p = new Paragraph();
+            tb.FontSize = 16;
+            Run r = new Run();
+            Run r2 = new Run();
+            if (q != null)
+            {
+                r.Text = q.content.Trim();
+                if (!answer.Equals(""))
+                {
+                    r.Text += ": ";
+                    r2.Text = answer + "\n";
+                    r2.FontWeight = FontWeights.Bold;
+                    p.Inlines.Add(r);
+                    p.Inlines.Add(r2);
+                }
+                else
+                {
+                    r2.Text = "Conclusion: ";
+                    r2.FontWeight = FontWeights.Bold;
+                    p.Inlines.Add(r2);
+                    p.Inlines.Add(r);
+                }
+            }
+            else
+            {
+                r.Text = answer + "\n";
+                r.FontWeight = FontWeights.Bold;
+                p.Inlines.Add(r);
+            }
+
+            tb.Blocks.Add(p);
+
             item.Content = tb;
             answeredQuestions.Items.Add(item);
-            TextBlock separatorTextBlock = new TextBlock();
-           // separatorTextBlock.Text = String.Concat(Enumerable.Repeat("-", 10));
-          //  answeredQuestions.Items.Add(separatorTextBlock);
         }
-
     }
 }

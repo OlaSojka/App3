@@ -4,12 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:App3">
     <Application.Resources>
-        <ImageBrush x:Key="Brush1" ImageSource="backgroung.jpg" Stretch="UniformToFill"/>
+        <ImageBrush x:Key="Brush1" ImageSource="01.jpg" Stretch="UniformToFill" Opacity="0.75"/>
         <Style x:Key="TextBlockStyle1" BasedOn="{StaticResource BaseTextBlockStyle}" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="{ThemeResource PhoneFontFamilySemiLight}"/>
-            <Setter Property="FontSize" Value="57.5"/>
+            <Setter Property="FontSize" Value="60"/>
             <Setter Property="FontWeight" Value="SemiLight"/>
-            <Setter Property="LineHeight" Value="57.5"/>
+            <Setter Property="LineHeight" Value="60"/>
             <Setter Property="TextWrapping" Value="NoWrap"/>
             <Setter Property="Foreground" Value="#A8A8A8"/>
         </Style>
@@ -21,14 +21,13 @@
         <!-- x:Key="WebViewStyle" TargetType="WebView">
             <Setter Property="DefaultBackgroundColor" Value=""></Setter>
         </-->
-        <Style x:Key="QuestionsTextBlockStyle" TargetType="TextBlock">
+        <Style x:Key="QuestionsTextBlockStyle" TargetType="RichTextBlock">
             <Setter Property="FontFamily" Value="{ThemeResource PhoneFontFamilySemiLight}"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Normal"/>
             <Setter Property="LineHeight" Value="20"/>
             <Setter Property="TextWrapping" Value="WrapWholeWords"/>
             <Setter Property="Foreground" Value="WhiteSmoke"/>
-
         </Style>
 
     </Application.Resources>

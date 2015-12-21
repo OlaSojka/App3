@@ -24,12 +24,29 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Pivot x:Uid="Pivot" Title="MY APPLICATION" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True" Grid.ColumnSpan="2" Margin="0,-1,0,28" >
+        <Pivot x:Uid="Pivot" Title="MedHelp" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True" Grid.ColumnSpan="2" Margin="0,-1,0,28" >
             <!--Pivot item one-->
             <PivotItem
                 x:Uid="PivotItem1"
                 Margin="19,14.5,0,0"
-                Header="Home"/>
+                Header="Home">
+                <Grid HorizontalAlignment="Left" Height="476" VerticalAlignment="Top" Width="371">
+                    <RichTextBlock  HorizontalAlignment="Left" VerticalAlignment="Top" Height="466" Width="361" Foreground="WhiteSmoke" FontSize="16">
+                        <Paragraph>
+                            <Bold>
+                                Welcome!
+                            </Bold>
+                            <LineBreak></LineBreak>
+                        </Paragraph>
+                        <Paragraph>
+                            This application is supposed to help you with the diagnosis and treatment.
+                            <LineBreak></LineBreak>Go to Select file to start.
+                            <LineBreak></LineBreak>For more information check About page.
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="Healthy-Heart-Beats.png" Margin="-93,341,-137,10" />
+                </Grid>
+            </PivotItem>
             <PivotItem
                 x:Uid="PivotItem2"
                 Margin="19,14.5,0,0"
@@ -39,10 +56,11 @@
                 CommonNavigationTransitionInfo.IsStaggerElement="True">
                 <!--Double line list with text wrapping-->
                 <ListView
+                    x:Name="FilesListView"
                     ItemsSource="{Binding Items}"
                     IsItemClickEnabled="True"
                     ItemClick="ItemView_ItemClick"
-                    ContinuumNavigationTransitionInfo.ExitElementContainer="True" Margin="0,0,-0.167,-0.333" >
+                    ContinuumNavigationTransitionInfo.ExitElementContainer="True" Margin="0,0,-0.167,0.667" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,0,0,9.5">
@@ -65,18 +83,76 @@
                 Margin="19,14.5,0,0"
                 Header="Questions">
                 <Grid x:Name="questionsGrid" HorizontalAlignment="Left" Height="513" VerticalAlignment="Top" Width="381" Margin="0,0,-0.167,0">
-                    <Button x:Name="yesButton" Margin="70,419,0,1" Height="93" Content="Yes" Click="yesButton_Click" Visibility="Collapsed" />
-                    <Button x:Name="noButton" Margin="205,419,0,1" Height="93" Content="No" Click="noButton_Click" Visibility="Collapsed" />
+                    <Button x:Name="yesButton" Margin="10,409,0,11" Height="93" Content="Yes" Click="yesButton_Click" Visibility="Collapsed" />
+                    <Button x:Name="noButton" Margin="132,409,0,11" Height="93" Content="No" Click="noButton_Click" Visibility="Collapsed" />
                     <ScrollViewer HorizontalAlignment="Left" Height="414" VerticalAlignment="Top" Width="361">
-                        <TextBlock x:Name="questionsTextBlock" HorizontalAlignment="Left" Text="No file selected" VerticalAlignment="Top" Height="414" Width="361" Style="{StaticResource QuestionsTextBlockStyle}"/>
+                        <RichTextBlock x:Name="questionsTextBlock" HorizontalAlignment="Left" VerticalAlignment="Top" Height="414" Width="361" Style="{StaticResource QuestionsTextBlockStyle}">
+                            <Paragraph>
+                                No file selected
+                            </Paragraph>
+                        </RichTextBlock>
                     </ScrollViewer>
+                    <Button x:Name="backButton" Margin="252,409,0,11" Height="93" Content="Back" Click="backButton_Click" Visibility="Collapsed" />
                 </Grid>
             </PivotItem>
             <PivotItem
                 x:Uid="PivotItem4"
                 Margin="19,14.5,0,0"
                 Header="About">
+                <Grid HorizontalAlignment="Left" Height="476" VerticalAlignment="Top" Width="371">
+                    <RichTextBlock x:Name="aboutTextBlock" HorizontalAlignment="Left" VerticalAlignment="Top" Height="145" Width="197" Foreground="WhiteSmoke" FontSize="16" Margin="0,10,0,0">
+                        <Paragraph LineHeight="25">
+                            <Bold>
+                                Author: Aleksandra Sójka
+                            </Bold>
+                        </Paragraph>
+                        <Paragraph>
+                            About me: I am a bachelor student in Computer Science. I like medicine and some years ealier I wanted to be a doctor, however, computer science won.
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Image Source="photo.jpg" Height="160" Width="160" Margin="202,0,9,316"></Image>
+                    <ScrollViewer HorizontalAlignment="Left" VerticalAlignment="Top" Height="309" Width="361" Margin="0,155,0,0">
+                        <RichTextBlock x:Name="aboutTextBlock2" HorizontalAlignment="Left" VerticalAlignment="Top"  Foreground="WhiteSmoke" FontSize="16">
+                            <Paragraph>
+                                I study at Lodz Univerity of Technology and my bachelor thesis is supervised by Professor Sławomir Wiak, Ph.D.,D.Sc., director of the Institute of Mechatronics and Information Systems.
+                                <LineBreak></LineBreak>
+                                <Bold>
+                                    Contact:
+                                </Bold>
+                                <LineBreak></LineBreak> e-mail: olasojka@gmail.com
+                                <LineBreak></LineBreak>
+                            </Paragraph>
+                            <Paragraph>
+                                <Bold>
+                                    About application:
+                                </Bold>
+                            </Paragraph>
+                            <Paragraph>
+                                It was developed as my bachelor project and is supposed to help with the diagnosis and treatment of the patients.
+                            </Paragraph>
+                            <Paragraph>
+                                After selecting file, either form the five prepared or any other uploaded by you, two more pages appear on both sides of Qusetions page: History and Conclusions.
+                                To start diagnosis you should scroll to the Questions page, where you answer questions and see the conclusion when reached. Eyerytime you decided, that the answer you chose was wrong, you can return to the previous question by clicking Back.
+                                <LineBreak></LineBreak>
+                                <Bold>
+                                    History page
+                                </Bold>
+                                shows all the actions taken, that means: answered questions along with their answers, reached conclusions and going back.
+                                <LineBreak></LineBreak>
+                                <Bold>Conclusions page
+                                </Bold>
+                                contains all possible conclusions that can be reached from the point you currently are.
+                            </Paragraph>
+                        </RichTextBlock>
+                    </ScrollViewer>
+                    <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Height="12" Width="361" Foreground="WhiteSmoke" FontSize="10" Margin="10,469,0,-5">
+                        <Paragraph TextAlignment="Right">
+                            February 2015
+                        </Paragraph>
+                    </RichTextBlock>
+                </Grid>
             </PivotItem>
         </Pivot>
     </Grid>
 </Page>
+ 

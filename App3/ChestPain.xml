@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <expertSystem xmlns="http://tempuri.org/XMLSchema.xsd">
   <title>Clinical evaluation of a patient with chest pain.</title>
-  <description>chest pain bla bla bla</description>
+  <description>Chest pain can be a symptom of many serious conditions and diseases, and in most cases is considered as medical emergency. Patients with chest pain should be thoroughly interviewed and examined, and the risk factors should be assessed. Causes of this symptom range from non-serious to life-threatening. Coronary artery disease is one of them and the pain accompanying it can be, among others, unstable angina. 
+The following file helps physicians to evaluate the patient with chest pain basing on the information gathered from them. Patient’s history, detailed description of the pain and recently past heart attack or medical procedures are all taken into consideration. The schema can be extended by others concerning guidelines on stress testing and coronary angiography, treatment of valve defects, or treatment of chronic unstable angina in order to have the whole process from diagnosis to treatment in one simple algorithm.</description>
   <questions>
   <question>
     <ID>0</ID>
     <isConclusion>false</isConclusion>
     <yes>1</yes>
     <no>2</no>
-    <content>
-      Medium or high probability of coronary disease based on history?
+    <content>Medium or high probability of coronary disease based on history?
     </content>
   </question>
   <question>
@@ -17,12 +17,11 @@
     <isConclusion>false</isConclusion>
     <yes>3</yes>
     <no>4</no>
-    <content>
-      Intermediate or high risk of  unstable angina
-      (rest pain lasting > 20min
-      age > 65 years
-      changes in ST-T
-      pulmonary edema)?
+    <content>Intermediate or high risk of  unstable angina
+(rest pain lasting > 20min
+age > 65 years
+changes in ST-T
+pulmonary edema)?
     </content>
   </question>
     <question>
@@ -30,15 +29,13 @@
       <isConclusion>false</isConclusion>
       <yes>5</yes>
       <no>6</no>
-      <content>
-        History and diagnostics indicate on-cardiac cause of chest pain?
+      <content>History and diagnostics indicate on-cardiac cause of chest pain?
       </content>
     </question>
   <question>
     <ID>3</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      See guidelines on unstable angina.
+    <content>See guidelines on unstable angina.
     </content>
   </question>
     <question>
@@ -46,30 +43,26 @@
       <isConclusion>false</isConclusion>
       <yes>7</yes>
       <no>8</no>
-      <content>
-        Recently past heart attack, PCI or CABG?
+      <content>Recently past heart attack, PCI or CABG?
       </content>
     </question>
     <question>
       <ID>5</ID>
       <isConclusion>true</isConclusion>
-      <content>
-        Proper treatment.
+      <content>Proper treatment.
       </content>
     </question>
     <question>
       <ID>6</ID>
       <isConclusion>true</isConclusion>
-      <content>
-        Assess again probability of coronary disease.
-        Implement primary prevention.
+      <content>Assess again probability of coronary disease.
+Implement primary prevention.
       </content>
     </question>
     <question>
       <ID>7</ID>
       <isConclusion>true</isConclusion>
-      <content>
-        See proper guidelines.
+      <content>See proper guidelines.
       </content>
     </question>
   <question>
@@ -77,8 +70,7 @@
     <isConclusion>false</isConclusion>
     <yes>9</yes>
     <no>10</no>
-    <content>
-      Conditions that can cause angina?
+    <content>Conditions that can cause angina?
     </content>
   </question>
   <question>
@@ -86,8 +78,7 @@
     <isConclusion>false</isConclusion>
     <yes>11</yes>
     <no>12</no>
-    <content>
-      Angina persists after treatment of the causing disease?
+    <content>Angina persists after treatment of the causing disease?
     </content>
   </question>
   <question>
@@ -95,8 +86,7 @@
     <isConclusion>false</isConclusion>
     <yes>13</yes>
     <no>14</no>
-    <content>
-      Data from the interview and/or examination indicate valve defect, pericardium disease or left ventricle dysfunction.
+    <content>Data from the interview and/or examination indicate valve defect, pericardium disease or left ventricle dysfunction.
     </content>
   </question>
   <question>
@@ -104,15 +94,13 @@
     <isConclusion>false</isConclusion>
     <yes>12</yes>
     <no>15</no>
-    <content>
-      Indication of risk and prognosis assessment?
+    <content>Indication of risk and prognosis assessment?
     </content>
   </question>
   <question>
     <ID>12</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      See guidelines on stress tests and coronary catheterization.
+    <content>See guidelines on stress tests and coronary catheterization.
     </content>
   </question>
   <question>
@@ -120,8 +108,7 @@
     <isConclusion>false</isConclusion>
     <yes>16</yes>
     <no>17</no>
-    <content>
-      Does echocardiogram show an advanced primary valve defect?
+    <content>Does echocardiogram show an advanced primary valve defect?
     </content>
   </question>
     <question>
@@ -129,23 +116,20 @@
       <isConclusion>false</isConclusion>
       <yes>11</yes>
       <no>12</no>
-      <content>
-        High probability of coronary disease based on data from history, examination, and ECG?
+      <content>High probability of coronary disease based on data from history, examination, and ECG?
       </content>
     </question>
   <question>
     <ID>15</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      Empirical treatment.
-      See guidelines on treatment.
+    <content>Empirical treatment.
+See guidelines on treatment.
     </content>
   </question>
   <question>
     <ID>16</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      See guidelines on valve defects.
+    <content>See guidelines on valve defects.
     </content>
   </question>
   <question>
@@ -153,8 +137,7 @@
     <isConclusion>false</isConclusion>
     <yes>11</yes>
     <no>14</no>
-    <content>
-      Symptoms of left valve damage?
+    <content>Symptoms of left valve damage?
     </content>
   </question>
   </questions>

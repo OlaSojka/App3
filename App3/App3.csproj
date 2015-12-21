@@ -97,6 +97,7 @@
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="ContinuationManager.cs" />
     <Compile Include="DataModel\SampleDataSource.cs" />
     <Compile Include="ExpertSystem.cs" />
     <Compile Include="ItemPage.xaml.cs">
@@ -113,6 +114,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="01.jpg" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\Logo.scale-140.png" />
     <Content Include="Assets\Logo.scale-240.png" />
@@ -136,9 +138,13 @@
     <Content Include="Common\ReadMe.txt" />
     <Content Include="FebrileSeizures.xml" />
     <Content Include="Headaches.xml" />
+    <Content Include="Healthy-Heart-Beats.png" />
+    <Content Include="heartrate.png" />
     <Content Include="medical.png" />
+    <Content Include="photo.jpg" />
     <Content Include="Rash.xml" />
     <Content Include="Swallowing.xml" />
+    <Content Include="test.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

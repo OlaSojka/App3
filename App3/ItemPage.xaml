@@ -33,22 +33,19 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock x:Uid="Header" Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock x:Uid="Header" Text="MedHelp" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
             <TextBlock Text="{Binding Title}" Style="{StaticResource TextBlockStyle1}" Margin="0,-6.5,0,26.5" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" TextWrapping="WrapWholeWords"/>
         </StackPanel>
-
-        <!-- 
-            TODO: Content should be placed within the following grid 
-                  to show details for the current item
-        -->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,12,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Height="30" Width="159" FontSize="16" Style="{StaticResource TextBlockStyle1}" FontWeight="Bold"/>
-            <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="10,197,0,0" TextWrapping="Wrap" Text="Sources" VerticalAlignment="Top" Height="30" Width="159" FontSize="16" FontWeight="Bold" Style="{StaticResource TextBlockStyle1}"/>
-            <WebView x:Name="WebViewSources" HorizontalAlignment="Left" Height="138" Margin="10,227,0,0" VerticalAlignment="Top" Width="342"/>
-            <WebView x:Name="WebViewDescription" HorizontalAlignment="Left" Height="66" Margin="10,42,0,0" VerticalAlignment="Top" Width="342"/>
+            <TextBlock x:Name="descriptionTitle" HorizontalAlignment="Left" Margin="10,12,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Height="30" Width="159" FontSize="17" Style="{StaticResource TextBlockStyle1}" FontWeight="Bold" Foreground="WhiteSmoke"/>
+            <TextBlock x:Name="sourcesTitle" HorizontalAlignment="Left" Margin="10,197,0,0" TextWrapping="Wrap" Text="Sources" VerticalAlignment="Top" Height="30" Width="159" FontSize="17" FontWeight="Bold" Style="{StaticResource TextBlockStyle1}" Foreground="WhiteSmoke"/>
             <Button x:Name="button" Content="Select" HorizontalAlignment="Left" Margin="243,382,0,0" VerticalAlignment="Top" Click="button_Click"/>
-            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,113,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="79" Width="342"/>
-
+            <ScrollViewer HorizontalAlignment="Left"  MaxHeight="150" Height="150" VerticalAlignment="Top" Width="342" Margin="10,42,0,0">
+                <RichTextBlock x:Name="DescriptionTextBlock" HorizontalAlignment="Left" FontSize="15" VerticalAlignment="Top" Width="342"/>
+            </ScrollViewer>
+            <ScrollViewer HorizontalAlignment="Left" Height="145" MaxHeight="145" VerticalAlignment="Top" Width="351" Margin="10,232,0,0">
+                <RichTextBlock x:Name="SourcesTextBlock" HorizontalAlignment="Left"  FontSize="15" Width="351"/>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </Page>

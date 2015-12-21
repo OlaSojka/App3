@@ -22,6 +22,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Xml.Serialization;
 using Windows.System;
+using Windows.UI.Xaml.Documents;
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
@@ -44,6 +45,7 @@ namespace App3
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+
         } 
 
         /// <summary>
@@ -120,18 +122,46 @@ namespace App3
             XmlSerializer x = new XmlSerializer(typeof(ExpertSystem), "http://tempuri.org/XMLSchema.xsd");
             expertSystem = (ExpertSystem)x.Deserialize(xmlReader);
 
-            this.WebViewDescription.NavigateToString(expertSystem.description);
+            /*  this.WebViewDescription.NavigateToString(expertSystem.description);
 
-            this.textBlock1.Text = expertSystem.description;
+              this.textBlock1.Text = expertSystem.description;
 
-            String sourceshtml = "";
+              String sourceshtml = "";
 
-            foreach (Source s in expertSystem.sources)
+              foreach (Source s in expertSystem.sources)
+              {
+                  sourceshtml += s.linkDescription + "</br><font color=\"blue\">" + s.link + "</font></br></br>";
+              }
+
+              this.WebViewSources.NavigateToString(sourceshtml);*/
+            DescriptionTextBlock.Blocks.Clear();
+            SourcesTextBlock.Blocks.Clear();
+
+            Run r = new Run();
+            r.Text = expertSystem.description;
+            Paragraph p = new Paragraph();
+            p.Inlines.Add(r);
+
+            DescriptionTextBlock.Blocks.Add(p);
+
+            foreach (var s in expertSystem.sources)
             {
-                sourceshtml += s.linkDescription + "</br><font color=\"blue\">" + s.link + "</font></br></br>";
-            }
+                Run description = new Run();
+                description.Text = s.linkDescription + "\n";
 
-            this.WebViewSources.NavigateToString(sourceshtml);
+                Run linklink = new Run();
+                linklink.Text = s.link + "\n";
+                
+                Hyperlink link = new Hyperlink();
+                link.Inlines.Add(linklink);
+                link.NavigateUri = new System.Uri(s.link);
+
+                Paragraph p1 = new Paragraph();
+                p1.Inlines.Add(description);
+                p1.Inlines.Add(link);
+
+                SourcesTextBlock.Blocks.Add(p1);
+            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

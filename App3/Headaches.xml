@@ -1,22 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <expertSystem xmlns="http://tempuri.org/XMLSchema.xsd">
   <title>International headaches classification.</title>
-  <description>headaches classification bla bla bla</description>
+  <description>Primary headaches are a lot more common than the secondary ones, they make up almost 90% of all headaches. Occurring for no obvious reason, they have a complex interplay of genetic, developmental, and environmental risk factors. Primary headaches are almost never dangerous in and of themselves, no matter how severe the symptoms. When they occur more than 15 days in month, they can be considered as chronic. 
+This simple diagnostic algorithm is useful in the fast differential diagnosis of daily chronic primary headaches in ambulatory practice. </description>
   <questions>
   <question>
     <ID>0</ID>
     <isConclusion>false</isConclusion>
     <yes>1</yes>
     <no>2</no>
-    <content>
-      Does, among the daily (or almost daily) headaches, the pain meet the criteria of migraine (with or without aura) during at least 8 days in the month or is relieved by triptans or ergotamine?
+    <content>Does, among the daily (or almost daily) headaches, the pain meet the criteria of migraine (with or without aura) during at least 8 days in the month or is relieved by triptans or ergotamine?
     </content>
   </question>
     <question>
       <ID>1</ID>
       <isConclusion>true</isConclusion>
-      <content>
-        Chronic migraine
+      <content>Chronic migraine
       </content>
     </question>
   <question>
@@ -24,15 +23,13 @@
     <isConclusion>false</isConclusion>
     <yes>3</yes>
     <no>4</no>
-    <content>
-      Is the pain constant, always on the same side, periodically with anatomical symptoms on the side of the pain (tearing, eye redness, watery discharge from the nasal passages) and is relieved by indomethacin?
+    <content>Is the pain constant, always on the same side, periodically with anatomical symptoms on the side of the pain (tearing, eye redness, watery discharge from the nasal passages) and is relieved by indomethacin?
     </content>
   </question>
   <question>
     <ID>3</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      Hemicrania continua
+    <content>Hemicrania continua
     </content>
   </question>
   <question>
@@ -40,15 +37,13 @@
     <isConclusion>false</isConclusion>
     <yes>5</yes>
     <no>6</no>
-    <content>
-      Did the headache, which is ongoing, begin on one particular day and from this day remains uninterrupted?
+    <content>Did the headache, which is ongoing, begin on one particular day and from this day remains uninterrupted?
     </content>
   </question>
     <question>
       <ID>5</ID>
       <isConclusion>true</isConclusion>
-      <content>
-        New daily persistent headache
+      <content>New daily persistent headache
       </content>
     </question>
   <question>
@@ -56,22 +51,19 @@
     <isConclusion>false</isConclusion>
     <yes>7</yes>
     <no>8</no>
-    <content>
-      Is the pain accompanied by other symptoms (other than sporadic nausea)?
+    <content>Is the pain accompanied by other symptoms (other than sporadic nausea)?
     </content>
   </question>
   <question>
     <ID>7</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      Consider secondary headache occurring every day.
+    <content>Consider secondary headache occurring every day.
     </content>
   </question>
   <question>
     <ID>8</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      Chronic tension-type headache
+    <content>Chronic tension-type headache
     </content>
   </question>
   </questions>

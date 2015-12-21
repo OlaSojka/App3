@@ -1,28 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <expertSystem xmlns="http://tempuri.org/XMLSchema.xsd">
   <title>Screening of swallowing in patients after stroke.</title>
-  <description>swallowing bla bla bla</description>
+  <description>Swallowing disorders are a common and potentially dangerous symptom of many neurological illnesses, not only stroke. Any damage to the nervous system might affect swallowing functions. Disorders can be the reason of malnutrition, dehydration or death. They can be recognized by observing symptoms like cough during swallowing, recurring pneumonia or wet sounding voice after eating or drinking. The proper diagnostics towards recognition of swallowing disorders can prevent its deadly consequences. 
+The schema of swallowing screening presented in the questions depicts an algorithm to be performed by nurse at the patients after stroke. Acting according to it, the nurse should know when can they start feeding the patient, clean their moth cavity or notify the doctor about disturbing symptoms.</description>
   <questions>
   <question>
     <ID>0</ID>
     <isConclusion>false</isConclusion>
     <yes>2</yes>
     <no>1</no>
-    <content>
-      Can the patient be:
-      •	seated
-      •	awake
-      •	conscious
-      for at least 15 minutes?
+    <content>Can the patient be:
+• seated
+• awake
+• conscious
+for at least 15 minutes?
     </content>
   </question>
   <question>
     <ID>1</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      Keep the recommendations:
-      •	Nothing orally.
-      •	Keep the mouth cavity’s hygiene.
+    <content>Keep the recommendations:
+• Nothing orally.
+• Keep the mouth cavity’s hygiene.
     </content>
   </question>
   <question>
@@ -30,15 +29,13 @@
     <isConclusion>false</isConclusion>
     <yes>4</yes>
     <no>3</no>
-    <content>
-      Is the mouth cavity clean?
+    <content>Is the mouth cavity clean?
     </content>
   </question>
   <question>
     <ID>3</ID>
     <isConclusion>true</isConclusion>
-    <content>
-      Clean the mouth cavity before proceeding to the rest of the test.
+    <content>Clean the mouth cavity before proceeding to the rest of the test.
     </content>
   </question>
     <question>
@@ -46,22 +43,20 @@
       <isConclusion>false</isConclusion>
       <yes>5</yes>
       <no>6</no>
-      <content>
-        Ask patient to swallow the salvia, say “aaaa” and cough.
-        Is any of the following symptoms present:
-        •	no swallowing movements
-        •	wet, “bubbling” voice
-        •	too weak on-command cough?
+      <content>Ask patient to swallow the salvia, say “aaaa” and cough.
+Is any of the following symptoms present:
+• no swallowing movements
+• wet, “bubbling” voice
+• too weak on-command cough?
       </content>
     </question>
     <question>
       <ID>5</ID>
       <isConclusion>true</isConclusion>
-      <content>
-        Keep the recommendations:
-        •	Nothing orally.
-        •	Notify the doctor and the speech therapist about the test results.
-        •	Keep the mouth cavity’s hygiene.
+      <content>Keep the recommendations:
+• Nothing orally.
+• Notify the doctor and the speech therapist about the test results.
+• Keep the mouth cavity’s hygiene.
       </content>
     </question>
   <question>
@@ -69,13 +64,12 @@
     <isConclusion>false</isConclusion>
     <yes>5</yes>
     <no>7</no>
-    <content>
-      Seat the patient comfortably with the back supported, give them 3x5ml of water. Put 2 fingers around the larynx, try to feel swallowing movements.
-      Is any of the following symptoms present:
-      •	no swallowing movements
-      •	changed quality of the voice (ask to say “aaaa”)
-      •	cough
-      •	cough few minutes after test?
+    <content>Seat the patient comfortably with the back supported, give them 3x5ml of water. Put 2 fingers around the larynx, try to feel swallowing movements.
+Is any of the following symptoms present:
+• no swallowing movements
+• changed quality of the voice (ask to say “aaaa”)
+• cough
+• cough few minutes after test?
     </content>
   </question>
   <question>
@@ -83,20 +77,18 @@
     <isConclusion>false</isConclusion>
     <yes>5</yes>
     <no>8</no>
-    <content>
-      Give the patient 90ml of water to drink. Watch them drink.
-      Is any of the following symptoms present:
-      •	no swallowing movements
-      •	changed quality of the voice (ask to say “aaaa”)
-      •	cough
-      •	cough few minutes after test?
+    <content>Give the patient 90ml of water to drink. Watch them drink.
+Is any of the following symptoms present:
+• no swallowing movements
+• changed quality of the voice (ask to say “aaaa”)
+• cough
+• cough few minutes after test?
     </content>
   </question>
     <question>
       <ID>8</ID>
       <isConclusion>true</isConclusion>
-      <content>
-        Start feeding carefully, starting with soft dishes. Watch if patient does not cough or develop the signs of respiratory tracts infection.
+      <content>Start feeding carefully, starting with soft dishes. Watch if patient does not cough or develop the signs of respiratory tracts infection.
       </content>
     </question>
   </questions>
